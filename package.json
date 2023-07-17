@@ -1,0 +1,21 @@
+{
+  "name": "@paypalcorp/chatgpt-paypal-plugin",
+  "version": "1.0.0",
+  "description": "node server to host chatgpt plugin related files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.paypal.com:vapk/chatgpt-paypal-plugin.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "http-proxy-middleware": "^2.0.6"
+  }
+}

@@ -1,0 +1,30 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <span id="lippButton"></span>
+    <script src="https://www.paypalobjects.com/js/external/api.js"></script>
+    <script>
+      paypal.use(["login"], function (login) {
+        login.render({
+          appid:
+            "AWWb2DZ7LLEvnRq3tm7scuB6oFKzaHyiilzKoEcd7cWk-JQU0yNzrH30BbE9e-_bZf8sA9MP9PNqBMKM",
+          authend: "sandbox",
+          scopes: "openid",
+          containerid: "lippButton",
+          responseType: "code",
+          locale: "en-us",
+          theme: "neutral",
+          buttonType: "LWP",
+          buttonShape: "pill",
+          buttonSize: "lg",
+          fullPage: "true",
+          returnurl: "https://www.example.com&newUI=Y",
+        });
+      });
+    </script>
+  </body>
+</html>

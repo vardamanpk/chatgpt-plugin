@@ -1,0 +1,25 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Invoicing Plugin",
+  "name_for_model": "invoicing",
+  "description_for_human": "Send an online invoice that customers can pay",
+  "description_for_model": "Send an online invoice that customers can pay",
+  "auth": {
+    "type": "oauth",
+    "client_url": "https://www.sandbox.paypal.com/connect",
+    "scope": "",
+    "authorization_url": "https://api-m.sandbox.paypal.com/v1/oauth2/token",
+    "authorization_content_type": "application/x-www-form-urlencoded",
+    "verification_tokens": {
+      "openai": "Replace_this_string_with_the_verification_token_generated_in_the_ChatGPT_UI"
+    }
+  },
+  "api": {
+    "type": "openapi",
+    "url": "http://localhost:3000/.well-known/inv-spec.json",
+    "is_user_authenticated": true
+  },
+  "logo_url": "http://localhost:3000/paypal-mark-color.svg",
+  "contact_email": "support@example.com",
+  "legal_info_url": "http://www.example.com/legal"
+}

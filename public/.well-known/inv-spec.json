@@ -1,0 +1,53 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Invoices",
+    "version": "2.4",
+    "description": "Use the Invoicing API to create, send, and manage invoices. You can also use the API or webhooks to track invoice payments. When you send an invoice to a customer, the invoice moves from draft to payable state. PayPal then emails the customer a link to the invoice on the PayPal website. Customers with a PayPal account can log in and pay the invoice with PayPal. Alternatively, customers can pay as a guest with a debit card or credit card. For more information, see the [Invoicing Overview](/docs/invoicing/) and the [Invoicing Integration Guide](/docs/invoicing/basic-integration/).",
+    "x-serviceName": "invoiceserv",
+    "x-publicDocsPath": "invoicing"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/v2/invoicing"
+    }
+  ],
+  "paths": {
+    "/invoices": {
+      "post": {
+        "summary": "Create draft invoice",
+        "description": "Create an invoice",
+        "operationId": "create",
+        "tags": ["invoices"],
+        "requestBody": {
+          "required": true,
+          "description": "Request Payload to create an invoice, required fields are merchant email address, and item name / amount",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/invoice"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Invoice has been successfully created"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "invoice": {
+        "type": "object",
+        "properties": {
+          "emailId": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
