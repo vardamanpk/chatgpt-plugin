@@ -11,7 +11,7 @@
     "authorization_url": "https://api-m.sandbox.paypal.com/v1/oauth2/token",
     "authorization_content_type": "application/x-www-form-urlencoded",
     "verification_tokens": {
-      "openai": "7193b213eb0a4db99c06ba67b8c2a35b"
+      "openai": "ebde266bc0914a8e90a39248fb6ee354"
     }
   },
   "api": {
