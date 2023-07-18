@@ -6,7 +6,7 @@
   "description_for_model": "Send an online invoice that customers can pay",
   "auth": {
     "type": "oauth",
-    "client_url": "https://www.sandbox.paypal.com/connect",
+    "client_url": "https://www.sandbox.paypal.com/webapps/auth/protocol/openidconnect/v1/authorize",
     "scope": "",
     "authorization_url": "https://api-m.sandbox.paypal.com/v1/oauth2/token",
     "authorization_content_type": "application/x-www-form-urlencoded",
