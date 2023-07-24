@@ -1,0 +1,104 @@
+openapi: 3.0.0
+info:
+  title: Invoicing API version v2
+  description: Use the Invoicing API to create, send, and manage invoices. You can also use the API or webhooks to track invoice payments. When you send an invoice to a customer, the invoice moves from draft to payable state. PayPal then emails the customer a link to the invoice on the PayPal website. Customers with a PayPal account can log in and pay the invoice with PayPal. Alternatively, customers can pay as a guest with a debit card or credit card. For more information, see the <a href="/docs/invoicing/">Invoicing Overview</a> and the <a href="/docs/invoicing/basic-integration/">Invoicing Integration Guide</a>.
+  version: 2.4
+servers:
+  - url: https://chatgpt-paypal.onrender.com/v2/invoicing # Replace with your server URL
+    description: Local development server
+paths:
+  /invoices:
+    post:
+      summary: Create draft invoice
+      description: Creates a draft invoice. To move the invoice from a draft to payable state, you must <a href="#invoices_send">send the invoice</a>.<br/><br/>In the JSON request body, include invoice details including merchant information. The <code>invoice</code> object must include an <code>items</code> array.<blockquote><strong>Note:</strong> The merchant that you specify in an invoice must have a PayPal account in good standing.</blockquote>.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExampleRequest'
+      responses:
+        '201':
+          description: Resource created successfully
+        '400':
+          description: Bad request
+
+components:
+  schemas:
+    Invoice:
+      type: object
+      required:
+        - detail
+        - primary_recipients
+        - items
+      properties:
+        detail:
+          $ref: '#/components/schemas/detail'
+        primary_recipients:
+          type: array
+          $ref: '#/components/schemas/primary_recipients'
+        items:
+          type: array
+          $ref: '#/components/schemas/items'
+    ExampleRequest:
+      type: object
+      required:
+        - name
+        - age
+        - email
+      properties:
+        name:
+          type: string
+          description: Name of the user
+        age:
+          type: integer
+          format: int32
+          description: Age of the user
+        email:
+          type: string
+          format: email
+          description: Email address of the user
+        
+    detail:
+      type: object
+      required:
+        - currency_code
+      properties:
+        currency_code:
+          type: string
+          description: The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.
+    primary_recipients:
+      type: object
+      required:
+        - billing_info
+      properties:
+        billing_info:
+          type: object
+          description: The recipient's billing information.
+          required:
+            - email_address
+          properties:
+            email_address:
+              type: string
+              format: email
+              description: The internationalized email address Note/; Up to 64 characters are allowed before and 255 characters are allowed after the @ sign. However, the generally accepted maximum length for an email address is 254 characters. The pattern verifies that an unquoted @ sign exists.
+    items:
+      type: object
+      required:
+        - name
+        - unitAmount
+      properties:
+        name:
+          type: string
+          description: The item name for the invoice line item.
+        unitAmount:
+          type: object
+          required:
+            - currency_code
+          properties:
+            currency_code:
+              type: string
+              description: The [three-character ISO-4217 currency code](/docs/integration/direct/rest/currency-codes/) that identifies the currency.
+            value:
+              type: string
+              description: For the required number of decimal places for a currency code, see [Currency Codes] default is 0.

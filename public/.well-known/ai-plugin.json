@@ -8,18 +8,18 @@
     "type": "oauth",
     "client_url": "https://www.sandbox.paypal.com/webapps/auth/protocol/openidconnect/v1/authorize",
     "scope": "",
-    "authorization_url": "https://api-m.sandbox.paypal.com/v1/oauth2/token",
-    "authorization_content_type": "application/x-www-form-urlencoded",
+    "authorization_url": "https://chatgpt-paypal.onrender.com/v1/oauth",
+    "authorization_content_type": "application/json",
     "verification_tokens": {
-      "openai": "ebde266bc0914a8e90a39248fb6ee354"
+      "openai": "96916375f2a8482f91fb73ee1176c5de"
     }
   },
   "api": {
     "type": "openapi",
-    "url": "https://chatgpt-paypal-invoice-plugin.onrender.com/.well-known/inv-spec.json",
+    "url": "https://chatgpt-paypal.onrender.com/.well-known/inv-spec.json",
     "is_user_authenticated": true
   },
-  "logo_url": "https://chatgpt-paypal-invoice-plugin.onrender.com/paypal-mark-color.svg",
+  "logo_url": "https://chatgpt-paypal.onrender.com/paypal-mark-color.svg",
   "contact_email": "support@example.com",
   "legal_info_url": "http://www.example.com/legal"
 }
