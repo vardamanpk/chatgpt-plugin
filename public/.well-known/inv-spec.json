@@ -9,7 +9,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000/v2/invoicing"
+      "url": "https://chatgpt-paypal-invoice-plugin.onrender.com/v2/invoicing"
     }
   ],
   "paths": {

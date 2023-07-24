@@ -6,20 +6,20 @@
   "description_for_model": "Send an online invoice that customers can pay",
   "auth": {
     "type": "oauth",
-    "client_url": "https://www.sandbox.paypal.com/connect",
+    "client_url": "https://www.sandbox.paypal.com/webapps/auth/protocol/openidconnect/v1/authorize",
     "scope": "",
     "authorization_url": "https://api-m.sandbox.paypal.com/v1/oauth2/token",
     "authorization_content_type": "application/x-www-form-urlencoded",
     "verification_tokens": {
-      "openai": "Replace_this_string_with_the_verification_token_generated_in_the_ChatGPT_UI"
+      "openai": "ebde266bc0914a8e90a39248fb6ee354"
     }
   },
   "api": {
     "type": "openapi",
-    "url": "http://localhost:3000/.well-known/inv-spec.json",
+    "url": "https://chatgpt-paypal-invoice-plugin.onrender.com/.well-known/inv-spec.json",
     "is_user_authenticated": true
   },
-  "logo_url": "http://localhost:3000/paypal-mark-color.svg",
+  "logo_url": "https://chatgpt-paypal-invoice-plugin.onrender.com/paypal-mark-color.svg",
   "contact_email": "support@example.com",
   "legal_info_url": "http://www.example.com/legal"
 }
