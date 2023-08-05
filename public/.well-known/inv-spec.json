@@ -21,7 +21,7 @@
                "content": {
                   "application/json": {
                      "schema": {
-                        "$ref": "#/components/schemas/ExampleRequest"
+                        "$ref": "#/components/schemas/Invoice"
                      }
                   }
                }
@@ -57,30 +57,6 @@
                "items": {
                   "type": "array",
                   "$ref": "#/components/schemas/items"
-               }
-            }
-         },
-         "ExampleRequest": {
-            "type": "object",
-            "required": [
-               "name",
-               "age",
-               "email"
-            ],
-            "properties": {
-               "name": {
-                  "type": "string",
-                  "description": "Name of the user"
-               },
-               "age": {
-                  "type": "integer",
-                  "format": "int32",
-                  "description": "Age of the user"
-               },
-               "email": {
-                  "type": "string",
-                  "format": "email",
-                  "description": "Email address of the user"
                }
             }
          },
