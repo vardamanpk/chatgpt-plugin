@@ -16,7 +16,7 @@
   },
   "api": {
     "type": "openapi",
-    "url": "https://chatgpt-paypal.onrender.com/.well-known/inv-spec.json",
+    "url": "https://chatgpt-paypal.onrender.com/.well-known/openapi.json",
     "is_user_authenticated": true
   },
   "logo_url": "https://chatgpt-paypal.onrender.com/paypal-mark-color.svg",

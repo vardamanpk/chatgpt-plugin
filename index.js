@@ -34,6 +34,17 @@ app.post("/v1/oauth", async (req, res) => {
     }
 })
 
+app.post("/invoices", (req, res) => {
+  console.log('body: ', req.body)
+  console.log('header: ', JSON.stringify(req.headers))
+  res.json({success: true, URL: "https://paypal.com/invoice/p/#INV2-1234-1234-1234"})
+})
+app.post("/send", (req, res) => {
+  console.log('body1: ', req.body)
+  console.log('header1: ', JSON.stringify(req.headers))
+  res.json({success: true, URL: "https://paypal.com/invoice/p/#INV2-1234-1234-1234"})
+})
+
 app.use(
   "/",
   createProxyMiddleware({
