@@ -51,6 +51,8 @@ app.use(
     target: "https://api-m.sandbox.paypal.com",
     changeOrigin: true,
     onProxyRes: function (proxyRes, req, res) {
+      console.log('body2: ', req.body)
+      console.log('header2: ', JSON.stringify(req.headers))
       let responseData = "";
 
       proxyRes.on("data", function (chunk) {
