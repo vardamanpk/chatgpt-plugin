@@ -50,11 +50,18 @@ app.use(
   createProxyMiddleware({
     target: "https://api-m.sandbox.paypal.com",
     changeOrigin: true,
+    onProxyReq: function(proxyReq, req, res) {
+      console.log('path:', req.path)
+      console.log('body3: ', req.body)
+      console.log('header3: ', JSON.stringify(req.headers))
+      console.log('body3a: ', proxyReq.body)
+      console.log('header3a: ', JSON.stringify(proxyReq.headers))
+    },
     onProxyRes: function (proxyRes, req, res) {
-      console.log('body2: ', req.body)
-      console.log('header2: ', JSON.stringify(req.headers))
+      console.log('body3: ', req.body)
+      console.log('header3: ', JSON.stringify(req.headers))
       let responseData = "";
-
+      
       proxyRes.on("data", function (chunk) {
         responseData += chunk;
       });
