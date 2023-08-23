@@ -11,7 +11,7 @@
     "authorization_url": "https://chatgpt-paypal.onrender.com/v1/oauth",
     "authorization_content_type": "application/json",
     "verification_tokens": {
-      "openai": "96916375f2a8482f91fb73ee1176c5de"
+      "openai": "6a5367c1ea6e41849dc42d93185060bf"
     }
   },
   "api": {
