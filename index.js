@@ -22,8 +22,15 @@ app.post("/v1/oauth", async (req, res) => {
         'Content-Type': 'application/x-www-form-urlencoded'
     };
 
-    const data = `grant_type=authorization_code&code=${req.body.code}&redirect_uri=${encodeURIComponent(req.body.redirect_uri)}`;
-
+    let data;
+    if(req.body.grant_type === 'authorization_code') {
+      data = `grant_type=authorization_code&code=${req.body.code}&redirect_uri=${encodeURIComponent(req.body.redirect_uri)}`;
+    } else if(req.body.grant_type === 'refresh_token') {
+      data = `grant_type=refresh_token&refresh_token=${req.body.refresh_token}`;
+    } else {
+      console.log("Invalid request");
+      return res.status(400).json({ error: 'INVALID_REQUEST' });
+    }
     try {
         const response = await axios.post('https://api-m.sandbox.paypal.com/v1/oauth2/token', data, { headers });
         console.log('res:', response.data);
@@ -58,8 +65,8 @@ app.use(
       console.log('header3a: ', JSON.stringify(proxyReq.headers))
     },
     onProxyRes: function (proxyRes, req, res) {
-      console.log('body3: ', req.body)
-      console.log('header3: ', JSON.stringify(req.headers))
+      console.log('body4: ', req.body)
+      console.log('header4: ', JSON.stringify(req.headers))
       let responseData = "";
       
       proxyRes.on("data", function (chunk) {
