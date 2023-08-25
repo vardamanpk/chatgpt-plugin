@@ -43,30 +43,45 @@
             }
          }
       },
-      "/send": {
-         "post": {
-            "summary": "Send invoice",
-            "operationId": "sendInvoice",
-            "description": "Create an invoice and send it to the recipient",
-            "requestBody": {
-               "required": true,
-               "content": {
-                  "application/json": {
-                     "schema": {
-                        "$ref": "#/components/schemas/Invoice"
-                     }
-                  }
-               }
-            },
-            "responses": {
-               "201": {
-                  "description": "Resource created successfully"
-               },
-               "400": {
-                  "description": "Bad request"
-               }
+      "/invoices/{invoice_id}/send": {
+        "post": {
+          "summary": "Send an invoice",
+          "operationId": "sendInvoice",
+          "description": "Send an invoice. If invoice not created already, create, get the invoice_id from response and send",
+          "parameters": [
+            {
+              "name": "invoice_id",
+              "in": "path",
+              "required": true,
+              "description": "ID of the invoice to send",
+              "schema": {
+                "type": "string"
+              }
             }
-         }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceSendRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/InvoiceSendResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
    },
    "components": {
@@ -220,6 +235,46 @@
               "example": "INV2-Z56S-5LLA-Q52L-CPZ5"
             }
           }
+        },
+        "InvoiceSendRequest": {
+          "type": "object",
+          "properties": {
+            "send_to_invoicer": {
+              "type": "boolean",
+              "description": "Indicates if the invoice should be sent to the invoicer"
+            }
+          },
+          "required": ["send_to_invoicer"]
+        },
+        "InvoiceSendResponse": {
+          "type": "object",
+          "properties": {
+            "links": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Link"
+              }
+            }
+          }
+        },
+        "Link": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string",
+              "description": "URL of the link"
+            },
+            "rel": {
+              "type": "string",
+              "description": "Relation type of the link"
+            },
+            "method": {
+              "type": "string",
+              "enum": ["GET", "POST", "PUT", "DELETE"],
+              "description": "HTTP method of the link"
+            }
+          },
+          "required": ["href", "rel", "method"]
         }
       }
     }
