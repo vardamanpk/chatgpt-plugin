@@ -58,6 +58,16 @@ app.use(
     target: "https://api-m.sandbox.paypal.com",
     changeOrigin: true,
     onProxyReq: function(proxyReq, req, res) {
+      if(req.headers['authorization']) {
+        proxyReq.setHeader('Authorization', req.headers['authorization']);
+      }
+      if (req.body) {
+        let bodyData = JSON.stringify(req.body);
+        proxyReq.setHeader('Content-Type', 'application/json');
+        proxyReq.setHeader('Content-Length', Buffer.byteLength(bodyData));
+        proxyReq.write(bodyData);
+        proxyReq.end();
+      }
       console.log('path:', req.path)
       console.log('body3: ', req.body)
       console.log('header3: ', JSON.stringify(req.headers))
