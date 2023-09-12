@@ -1,6 +1,6 @@
 {
   "schema_version": "v1",
-  "name_for_human": "Invoicing Plugin",
+  "name_for_human": "PayPal Invoicing",
   "name_for_model": "invoicing",
   "description_for_human": "Send an online invoice that customers can pay",
   "description_for_model": "Send an online invoice that customers can pay",
